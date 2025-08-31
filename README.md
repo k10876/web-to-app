@@ -32,6 +32,10 @@ The repository includes a GitHub Actions workflow that automatically builds the 
 git clone https://github.com/k10876/web-to-app.git
 cd web-to-app
 
+# Option A: Use the build script (recommended)
+./build.sh
+
+# Option B: Manual build
 # Make gradlew executable
 chmod +x gradlew
 
