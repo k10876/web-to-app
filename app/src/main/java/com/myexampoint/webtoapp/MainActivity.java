@@ -3,8 +3,8 @@ package com.myexampoint.webtoapp;
 
 import android.content.DialogInterface;
 import android.net.http.SslError;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.webkit.SslErrorHandler;
@@ -30,8 +30,14 @@ public class MainActivity extends AppCompatActivity {
         spinner = (ProgressBar)findViewById(R.id.progressBar1);
         webview.setWebViewClient(new CustomWebViewClient());
 
+        // Configure WebView settings for Android 14 compatibility
         webview.getSettings().setJavaScriptEnabled(true);
         webview.getSettings().setDomStorageEnabled(true);
+        webview.getSettings().setAllowFileAccess(false);
+        webview.getSettings().setAllowContentAccess(false);
+        webview.getSettings().setAllowFileAccessFromFileURLs(false);
+        webview.getSettings().setAllowUniversalAccessFromFileURLs(false);
+        webview.getSettings().setMixedContentMode(android.webkit.WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
         webview.setOverScrollMode(WebView.OVER_SCROLL_NEVER);
         webview.loadUrl(myurl);
 
@@ -161,8 +167,14 @@ public class MainActivity extends AppCompatActivity {
         spinner = (ProgressBar)findViewById(R.id.progressBar1);
         webview.setWebViewClient(new CustomWebViewClient());
 
+        // Configure WebView settings for Android 14 compatibility
         webview.getSettings().setJavaScriptEnabled(true);
         webview.getSettings().setDomStorageEnabled(true);
+        webview.getSettings().setAllowFileAccess(false);
+        webview.getSettings().setAllowContentAccess(false);
+        webview.getSettings().setAllowFileAccessFromFileURLs(false);
+        webview.getSettings().setAllowUniversalAccessFromFileURLs(false);
+        webview.getSettings().setMixedContentMode(android.webkit.WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
         webview.setOverScrollMode(WebView.OVER_SCROLL_NEVER);
         webview.loadUrl(myurl);
     }
