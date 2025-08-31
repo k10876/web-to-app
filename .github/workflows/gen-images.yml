@@ -32,7 +32,10 @@ jobs:
             size=${sizes[$dir]}
             target_dir="$RES_DIR/$dir"
             mkdir -p "$target_dir"
-            convert "$SOURCE" -resize "$size" "$target_dir/ic_launcher.png"
+            shrink=$(echo "$size" | awk -F'x' '{printf "%dx%d", int($1*0.8), int($2*0.8)}')
+            convert "$SOURCE" -resize "$shrink" -gravity center -background white -extent "$size" "$target_dir/ic_launcher.png"
+            convert "$SOURCE" -resize "$shrink" -gravity center -background white -extent "$size" "$target_dir/ic_launcher_foreground.png"
+            convert "$SOURCE" -resize "$shrink" -gravity center -background white -extent "$size" "$target_dir/ic_launcher_round.png"
           done
 
       - name: Commit and push changes
